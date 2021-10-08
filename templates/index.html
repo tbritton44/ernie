@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+  {% for mask in masks %}
+  <div class="row">
+    <pre>{{ mask["sequence"] }}</pre>
+  </div>
+  {% endfor %}  
+</div>
+{% endblock %}
