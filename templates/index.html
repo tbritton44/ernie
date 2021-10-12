@@ -1,11 +1,16 @@
+{% from "_formhelpers.html" import render_field %}
 {% extends "layout.html" %}
 
 {% block content %}
 <div class="row">
-  {% for mask in masks %}
-  <div class="row">
-    <pre>{{ mask["sequence"] }}</pre>
-  </div>
-  {% endfor %}  
+  <h2>Ask Ernie</h2>
+  <form action="{{ url_for('ask') }}" method="post">
+  <dl>
+    <label for="prompt">Ask Ernie a question:</label>
+    <input type="text" class="prompt" name="prompt" value="Hello, This is Farmer Ernie. You might wonder why a city kid like me is doing out here in the [MASK]?" />
+    </br>
+    <input id="ask" type="submit" value="Ask Ernie">
+    {{ form.hidden_tag() }}
+  </form>
 </div>
 {% endblock %}

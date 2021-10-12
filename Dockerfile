@@ -4,4 +4,5 @@ COPY . /ernie
 WORKDIR /ernie
 RUN pip install -e .
 
-CMD FLASK_APP=ernie flask run
+ENV FLASK_APP ernie
+CMD flask run

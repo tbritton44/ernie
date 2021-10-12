@@ -13,6 +13,7 @@ setuptools.setup(
     python_requires='>=3.8',
     install_requires=[
         'Flask',
+        'Flask-WTF',
         'transformers[torch]'
     ]
 )
