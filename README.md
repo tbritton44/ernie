@@ -23,7 +23,7 @@ Where Ernie has predicted the word that replaces the `[MASK]` symbol.
 ```shell
 python3 -m venv venv
 source venv/bin/activate
-python ./setup.py install
+pip install -e .[dev]
 ```
 
 ### Running Ernie locally

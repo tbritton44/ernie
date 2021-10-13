@@ -1,7 +1,7 @@
 import setuptools
 
 extras = {
-    "dev": ["pytest==6.2.4", "nose==1.3.7"],
+    "dev": ["pytest==6.2.4"]
 }
 
 setuptools.setup(
