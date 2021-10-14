@@ -26,7 +26,7 @@ source venv/bin/activate
 pip install -e .[dev]
 ```
 
-Running ernie:
+Running Flask:
 
 ``` shell
 FLASK_ENV=development FLASK_APP=ernie:app flask run
@@ -36,9 +36,9 @@ FLASK_ENV=development FLASK_APP=ernie:app flask run
 
 Ask Ernie™ has grown to be quite a popular service.
 
-In order to scale our model, we would like you to modify ernie so that requests
+In order to scale up our model, we would like you to modify ernie so that requests
 to the server are queued using [NATS](https://nats.io/), and serviced by a pool
-of workers in the background.
+of workers that are run in a separate Python process from the Flask application.
 
 Each worker should listen for messages published on NATS, and respond with the
 output from the model that is currently in `ernie/ernie.py`, which should
@@ -54,3 +54,31 @@ NATS can be run as a standalone Docker container using the following invocation
 ``` shell
 docker run -p 4222:4222 nats
 ```
+
+### NATS Python
+
+NATS has several Python clients that can be used for this exercise.
+
+
+- [nats-python](https://github.com/Gr1N/nats-python)
+- [nats.py](https://github.com/nats-io/nats.py)
+
+While the "official" nats.py client may be attractive at first, it makes
+use of `asyncio`, which Flask does not.
+
+A solution with either library is perfectly acceptable. We found it a little
+simpler to use the `nats-python` library.
+
+
+### Criteria for the assignment
+
+The intent of this exercise is for us to see how you approach a problem,
+how you like to structure your code, and to get a sense of the code that
+you typically write.
+
+We've attempted to scope this exercise to be respectful of your time.
+Completing the assignment should take no longer than two hours.
+
+If you find that you didn't have time to do include things you would have liked,
+feel free to include them in your PR description instead of spending the
+extra time to complete them.
