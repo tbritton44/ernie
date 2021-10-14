@@ -26,9 +26,31 @@ source venv/bin/activate
 pip install -e .[dev]
 ```
 
-### Running Ernie locally
+Running ernie:
 
 ``` shell
 FLASK_ENV=development FLASK_APP=ernie:app flask run
 ```
 
+## Take-home assignment
+
+Ask Ernie™ has grown to be quite a popular service.
+
+In order to scale our model, we would like you to modify ernie so that requests
+to the server are queued using [NATS](https://nats.io/), and serviced by a pool
+of workers in the background.
+
+Each worker should listen for messages published on NATS, and respond with the
+output from the model that is currently in `ernie/ernie.py`, which should
+be returned as a response to the client.
+
+You should be able to start multiple worker processes so that messages on the
+queue are divided up among a number of workers.
+
+### Running NATS
+
+NATS can be run as a standalone Docker container using the following invocation
+
+``` shell
+docker run -p 4222:4222 nats
+```
